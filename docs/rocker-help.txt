@@ -1,0 +1,128 @@
+usage: rocker [-h] [--noexecute] [--nocache] [--nocleanup] [--persist-image]
+              [--pull] [--version] [--cuda] [--dev-helpers]
+              [--devices [DEVICES ...]] [--env NAME[=VALUE] [NAME[=VALUE]
+              ...]] [--env-file ENV_FILE] [--expose EXPOSE] [--git]
+              [--git-config-path GIT_CONFIG_PATH] [--group-add GROUP_ADD]
+              [--home] [--hostname HOSTNAME] [--ipc IPC] [--name NAME]
+              [--network {bridge,none,host}] [--nvidia [{auto,runtime,gpus}]]
+              [--nvidia-glvnd-version {16.04,18.04,20.04,22.04,24.04}]
+              [--nvidia-glvnd-policy {latest_lts}] [--port PORT]
+              [--privileged] [--pulse] [--rmw {cyclonedds,fastrtps,zenoh}]
+              [--shm-size SHM_SIZE] [--ssh]
+              [--ulimit TYPE=SOFT_LIMIT[:HARD_LIMIT]
+              [TYPE=SOFT_LIMIT[:HARD_LIMIT] ...]] [--user]
+              [--user-override-name USER_OVERRIDE_NAME] [--user-preserve-home]
+              [--user-preserve-groups [USER_PRESERVE_GROUPS ...]]
+              [--user-preserve-groups-permissive]
+              [--user-override-shell USER_OVERRIDE_SHELL]
+              [--volume HOST-DIR[:CONTAINER-DIR[:OPTIONS]]
+              [HOST-DIR[:CONTAINER-DIR[:OPTIONS]] ...]] [--x11]
+              [--mode {interactive,non-interactive,dry-run}]
+              [--image-name IMAGE_NAME]
+              [--extension-blacklist [EXTENSION_BLACKLIST ...]]
+              [--strict-extension-selection]
+              image [command ...]
+
+A tool for running docker with extra options
+
+positional arguments:
+  image
+  command
+
+options:
+  -h, --help            show this help message and exit
+  --noexecute           Deprecated (default: False)
+  --nocache
+  --nocleanup           do not remove the docker container when stopped
+                        (default: False)
+  --persist-image       do not remove the docker image when stopped (default:
+                        False)
+  --pull
+  --version             show program's version number and exit
+  --cuda                Install cuda and nvidia-cuda-dev into the container
+                        (default: None)
+  --dev-helpers         add development tools emacs and byobu to your
+                        environment (default: None)
+  --devices [DEVICES ...]
+                        Mount devices into the container. (default: None)
+  --env NAME[=VALUE] [NAME[=VALUE] ...], -e NAME[=VALUE] [NAME[=VALUE] ...]
+                        set environment variables (default: [])
+  --env-file ENV_FILE   set environment variable via env-file (default: None)
+  --expose EXPOSE       Exposes a port from the container to host machine.
+                        (default: None)
+  --git                 Use the global Git settings from the host
+                        (/etc/gitconfig and ~/.gitconfig) (default: None)
+  --git-config-path GIT_CONFIG_PATH
+                        Override the path to the git config default:
+                        /home/tejas/.gitconfig (default:
+                        /home/tejas/.gitconfig)
+  --group-add GROUP_ADD
+                        Add additional groups to join. (default: None)
+  --home                mount the users home directory (default: None)
+  --hostname HOSTNAME   Hostname of the container. (default: )
+  --ipc IPC             IPC namespace to use. To share ipc with the host use
+                        host. More details can be found at https://docs.docker
+                        .com/reference/cli/docker/container/run/#ipc (default:
+                        None)
+  --name NAME           Name of the container. (default: )
+  --network {bridge,none,host}
+                        What network configuration to use. (default: None)
+  --nvidia [{auto,runtime,gpus}]
+                        Enable nvidia. Default behavior is to pick flag based
+                        on docker version. (default: None)
+  --nvidia-glvnd-version {16.04,18.04,20.04,22.04,24.04}
+                        Explicitly select an nvidia glvnd version (default:
+                        None)
+  --nvidia-glvnd-policy {latest_lts}
+                        Set an nvidia glvnd version policy if version is unset
+                        (default: latest_lts)
+  --port PORT           Binds port from the container to host machine.
+                        (default: None)
+  --privileged          give extended privileges to the container (default:
+                        None)
+  --pulse               mount pulse audio devices (default: None)
+  --rmw {cyclonedds,fastrtps,zenoh}
+                        Set the default RMW implementation (default: None)
+  --shm-size SHM_SIZE   Set the size of the shared memory for the container
+                        (e.g., 512m, 1g). (default: None)
+  --ssh                 Forward SSH agent into the container (default: None)
+  --ulimit TYPE=SOFT_LIMIT[:HARD_LIMIT] [TYPE=SOFT_LIMIT[:HARD_LIMIT] ...]
+                        ulimit options to add into the container. (default:
+                        None)
+  --user                mount the current user's id and run as that user
+                        (default: None)
+  --user-override-name USER_OVERRIDE_NAME
+                        override the current user's name (default: None)
+  --user-preserve-home  Do not delete home directory if it exists when making
+                        a new user. (default: False)
+  --user-preserve-groups [USER_PRESERVE_GROUPS ...]
+                        Assign user to same groups as he belongs in host. If
+                        arguments provided they are the explicit list of
+                        groups. (default: False)
+  --user-preserve-groups-permissive
+                        If using user-preserve-groups allow failures in
+                        assignment.This is important if the host and target
+                        have different rules.
+                        https://unix.stackexchange.com/a/11481/83370 (default:
+                        False)
+  --user-override-shell USER_OVERRIDE_SHELL
+                        Override the current user's shell. Set to empty string
+                        to use container default shell (default: None)
+  --volume HOST-DIR[:CONTAINER-DIR[:OPTIONS]] [HOST-DIR[:CONTAINER-DIR[:OPTIONS]] ...]
+                        volume(s) to map into the container. The last path
+                        must be followed by two dashes "--" (default: None)
+  --x11                 Enable x11 (default: None)
+  --mode {interactive,non-interactive,dry-run}
+                        Choose mode of operation for rocker (default:
+                        interactive)
+  --image-name IMAGE_NAME
+                        Tag the final image, useful with dry-run (default:
+                        None)
+  --extension-blacklist [EXTENSION_BLACKLIST ...]
+                        Prevent any of these extensions from being loaded.
+                        (default: [])
+  --strict-extension-selection
+                        When enabled, causes an error if required extensions
+                        are not explicitly called out on the command line.
+                        Otherwise, the required extensions will automatically
+                        be loaded if available. (default: False)
