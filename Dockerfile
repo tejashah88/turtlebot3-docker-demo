@@ -26,7 +26,7 @@ RUN groupadd --gid ${USER_GID} ${USERNAME} && \
 USER $USERNAME
 ENV HOME=/home/${USERNAME}
 
-# Install common utilities used for apt management (mainly Python)
+# Install common utilities
 RUN sudo apt-get update && \
     sudo apt-get install -y \
         software-properties-common && \
@@ -35,6 +35,8 @@ RUN sudo apt-get update && \
 # Install additional dependencies
 RUN sudo apt-get update && \
     sudo apt-get install -y \
+        # Install nano editor
+        nano \
         # Install Gazebo Classic ROS packages & Turtlebot3 packages
         ros-humble-gazebo-ros-pkgs \
         # Install colcon extension dependencies
