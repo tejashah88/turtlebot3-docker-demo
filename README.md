@@ -4,16 +4,16 @@ Testing the Turtlebot3 demos (real &amp; simulated) with Docker &amp; GPU integr
 * [Setup](#setup)
   * [Prerequisites](#prerequisites)
   * [Install docker](#install-docker)
-    * [Installation](#installation-source)
+    * [Installation](#installation)
     * [Verification](#verification)
-    * [Post-installation](#post-installation-source)
+    * [Post-installation](#post-installation)
     * [(Optional) Launch Docker on boot](#optional-launch-docker-on-boot)
   * [(Optional) Enable NVIDIA GPU support](#optional-enable-nvidia-gpu-support)
-    * [Install/Update NVIDIA CUDA Driver](#installupdate-nvidia-cuda-driver-source)
-    * [Installat NVIDIA Container Toolkit](#installat-nvidia-container-toolkit-source)
+    * [Install/Update NVIDIA CUDA Driver](#installupdate-nvidia-cuda-driver)
+    * [Installat NVIDIA Container Toolkit](#installat-nvidia-container-toolkit)
 * [Install Rocker](#install-rocker)
-  * [Minimal Setup](#minimal-setup-source)
-  * [Install Rocker](#install-rocker-1)
+  * [Minimal Setup](#minimal-setup)
+  * [Install Rocker](#install-rocker)
 * [Usage](#usage)
 
 ## Setup
@@ -27,7 +27,9 @@ All steps below have been copied from their respective source guides. If anythin
 
 ### Install docker
 
-#### Installation [[source](https://docs.docker.com/engine/install/ubuntu/#uninstall-old-versions)]
+#### Installation
+
+Source: https://docs.docker.com/engine/install/ubuntu/#uninstall-old-versions
 
 ```bash
 # Uninstall any conflicting packages
@@ -64,7 +66,10 @@ sudo systemctl start docker
 sudo docker run hello-world
 ```
 
-#### Post-installation [[source](https://docs.docker.com/engine/install/linux-postinstall/)]
+#### Post-installation
+
+Source: https://docs.docker.com/engine/install/linux-postinstall/
+
 This enables using docker without `sudo`, although it'll enable root-level permissions for your user.
 ```bash
 # Create a new group and add your user to it
@@ -99,13 +104,16 @@ sudo systemctl enable containerd.service
 
 This can be disabled later on.
 ```bash
-sudo systemctl enable docker.service
-sudo systemctl enable containerd.service
+sudo systemctl disable docker.service
+sudo systemctl disable containerd.service
 ```
 
 ### (Optional) Enable NVIDIA GPU support
 
-#### Install/Update NVIDIA CUDA Driver [[source](https://documentation.ubuntu.com/server/how-to/graphics/install-nvidia-drivers/)]
+#### Install/Update NVIDIA CUDA Driver
+
+Source: https://documentation.ubuntu.com/server/how-to/graphics/install-nvidia-drivers/
+
 ```bash
 # Verify the NVIDIA CUDA driver is installed
 nvidia-smi
@@ -163,7 +171,10 @@ sudo ubuntu-drivers install nvidia:XXX
 sudo ubuntu-drivers install nvidia:580
 ```
 
-#### Installat NVIDIA Container Toolkit [[source](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)]
+#### Installat NVIDIA Container Toolkit
+
+Source: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
+
 ```bash
 # Add repository to apt sources
 curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | \ sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
@@ -186,9 +197,12 @@ sudo systemctl restart docker
 
 ## Install Rocker
 
-If you have ROS1 or ROS2 installed, you should be able to install rocker with `sudo apt-get install python3-rocker`. Otherwise follow the instructions below.
+If you have ROS1 or ROS2 installed, you should be able to install rocker with `pip3 install --user rocker`. Otherwise follow the instructions below.
 
-### Minimal Setup [[source](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html)]
+### Minimal Setup
+
+Source: https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html
+
 ```bash
 # Add the Ubuntu Universe repository
 sudo apt install software-properties-common
@@ -206,7 +220,8 @@ sudo apt update
 
 ### Install Rocker
 ```bash
-sudo apt-get install python3-rocker
+# Install from APT
+pip3 install --user rocker
 ```
 
 ## Usage
@@ -220,6 +235,9 @@ ros2 launch turtlebot3_bringup robot.launch.py
 
 3. On your physical PC, start a new terminal. Run the following commands:
 ```bash
+# (Optional) Pull the latest image base
+./scripts/01_update_base.sh
+
 # Build the docker image
 ./scripts/00_build.sh
 
